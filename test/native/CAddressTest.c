@@ -110,3 +110,23 @@ JNIEXPORT jboolean JNICALL Java_cz_mg_c_core_common_CAddressTest_verifyPointerMa
 JNIEXPORT jboolean JNICALL Java_cz_mg_c_core_common_CAddressTest_verifySize(JNIEnv* env, jclass clazz) {
     return sizeof(void*) == sizeof(jlong) ? JNI_TRUE : JNI_FALSE;
 }
+
+JNIEXPORT jboolean JNICALL Java_cz_mg_c_core_common_CAddressTest_verifyHalfPlusZero(JNIEnv* env, jclass clazz, jlong value) {
+    return (getPointerHalf() + 0 == l2a(value)) ? JNI_TRUE : JNI_FALSE;
+}
+
+JNIEXPORT jboolean JNICALL Java_cz_mg_c_core_common_CAddressTest_verifyHalfPlusOne(JNIEnv* env, jclass clazz, jlong value) {
+    return (getPointerHalf() + 1 == l2a(value)) ? JNI_TRUE : JNI_FALSE;
+}
+
+JNIEXPORT jboolean JNICALL Java_cz_mg_c_core_common_CAddressTest_verifyHalfMinusOne(JNIEnv* env, jclass clazz, jlong value) {
+    return (getPointerHalf() - 1 == l2a(value)) ? JNI_TRUE : JNI_FALSE;
+}
+
+JNIEXPORT jboolean JNICALL Java_cz_mg_c_core_common_CAddressTest_verifyHalfPlusSeven(JNIEnv* env, jclass clazz, jlong value) {
+    return (getPointerHalf() + 7 == l2a(value)) ? JNI_TRUE : JNI_FALSE;
+}
+
+JNIEXPORT jboolean JNICALL Java_cz_mg_c_core_common_CAddressTest_verifyHalfMinusSeven(JNIEnv* env, jclass clazz, jlong value) {
+    return (getPointerHalf() - 7 == l2a(value)) ? JNI_TRUE : JNI_FALSE;
+}

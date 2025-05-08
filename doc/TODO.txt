@@ -2,13 +2,20 @@
     ...
 
 ### SOON ###
-    implement CAddress plus method and add test
     consider adding sizeof to CObject
     add CObject test
     implement CArray and add test
     implement CPointer and add test
     implement types and add test
     extend CMemory test
+
+    resolve data type for sizeof
+        its size may be up to 64-bit unsigned integer
+        which might be problematic in java
+        possibly add validation in native code to check that actual value fits in jlong
+            throw exception in other cases
+            acceptable, because huge sizes are not common
+            might create a helper shared function in native code
 
 ### LATER ###
     ...
