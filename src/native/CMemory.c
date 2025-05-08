@@ -1,4 +1,4 @@
-#include "CAddress.h"
+#include "CConvert.h"
 #include <stdlib.h>
 
 JNIEXPORT jlong JNICALL Java_cz_mg_c_core_common_CMemory_allocate(JNIEnv* env, jclass clazz, jlong size) {
