@@ -16,6 +16,7 @@ public class CAddressTest {
         CAddressTest test = new CAddressTest();
         test.testNull();
         test.testConvert();
+        test.testSize();
 
         System.out.println("OK");
     }
@@ -35,6 +36,10 @@ public class CAddressTest {
         Assert.assertEquals(true, verifyPointerHalfPlusOne(move(getPointerHalfPlusOne())));
         Assert.assertEquals(true, verifyPointerMaxMinusOne(move(getPointerMaxMinusOne())));
         Assert.assertEquals(true, verifyPointerMax(move(getPointerMax())));
+    }
+
+    private void testSize() {
+        Assert.assertEquals(true, verifySize());
     }
 
     long move(long value) {
@@ -60,4 +65,6 @@ public class CAddressTest {
     private static native boolean verifyPointerHalfPlusOne(long value);
     private static native boolean verifyPointerMaxMinusOne(long value);
     private static native boolean verifyPointerMax(long value);
+
+    private static native boolean verifySize();
 }
