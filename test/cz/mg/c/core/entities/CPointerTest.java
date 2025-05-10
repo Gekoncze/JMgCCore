@@ -1,8 +1,7 @@
-package cz.mg.c.core.common;
+package cz.mg.c.core.entities;
 
 import cz.mg.c.core.CTestLibrary;
 import cz.mg.c.core.Configuration;
-import cz.mg.c.core.entities.CPointer;
 import cz.mg.test.Assert;
 
 import static cz.mg.c.core.entities.CPointer.NULL;

@@ -2,7 +2,6 @@
     ...
 
 ### SOON ###
-    add CObject test
     implement CArray and add test
     implement CPointer and add test
     implement types and add test
