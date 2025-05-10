@@ -1,5 +1,5 @@
 ### NOW ###
-    add move CConvert tests
+    ...
 
 ### SOON ###
     consider adding sizeof to CObject
