@@ -34,8 +34,8 @@ public @Data class CArray<C extends CObject> extends CObject implements Readable
             throw new ArrayIndexOutOfBoundsException("Index " + i + " out of " + count + " elements.");
         }
 
-        return metadata.getFactory().create(
-            CPointer.nativePlus(address, i * metadata.getSize())
+        return metadata.factory().create(
+            CPointer.nativePlus(address, i * metadata.size())
         );
     }
 

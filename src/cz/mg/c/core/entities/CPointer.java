@@ -16,15 +16,10 @@ public @Data class CPointer<C extends CObject> extends CObject {
         this.metadata = metadata;
     }
 
-
-    public @Mandatory CMetadata<C> getMetadata() {
-        return metadata;
-    }
-
     @Optional
     public C target() {
         long value = get();
-        return value == NULL ? null : metadata.getFactory().create(value);
+        return value == NULL ? null : metadata.factory().create(value);
     }
 
     public long get() {
@@ -35,7 +30,7 @@ public @Data class CPointer<C extends CObject> extends CObject {
         nativeSet(address, value);
     }
 
-    public static native long nativeSizeof();
+    public static native long sizeof();
     public static native long nativeGet(long address);
     public static native void nativeSet(long address, long value);
     public static native long nativePlus(long address, long delta);

@@ -2,8 +2,8 @@
     ...
 
 ### SOON ###
+    add memory manager test
     implement CArray and add test
-    implement CPointer and add test
     implement types and add test
     extend CMemory test
 

@@ -2,6 +2,7 @@ package cz.mg.c.core.entities;
 
 import cz.mg.c.core.CTestLibrary;
 import cz.mg.c.core.Configuration;
+import cz.mg.c.core.common.CMemoryManager;
 import cz.mg.test.Assert;
 
 import static cz.mg.c.core.entities.CPointer.NULL;
@@ -14,6 +15,8 @@ public class CPointerTest {
 
         CPointerTest test = new CPointerTest();
         test.testNull();
+        test.testSizeof();
+        test.testGetAndSet();
         test.testPlus();
 
         System.out.println("OK");
@@ -24,6 +27,33 @@ public class CPointerTest {
         Assert.assertEquals(true, verifyNull());
         Assert.assertEquals(true, verifyNull2(NULL));
         Assert.assertEquals(false, verifyNull2(1));
+    }
+
+    private void testSizeof() {
+        Assert.assertEquals(8L, CPointer.sizeof());
+    }
+
+    private void testGetAndSet() {
+        try (CMemoryManager manager = new CMemoryManager()) {
+            CPointer<CObject> pointer = new CPointer<>(
+                manager.allocate(CPointer.sizeof()),
+                CObject.METADATA
+            );
+
+            Assert.assertEquals(NULL, pointer.get());
+            Assert.assertEquals(null, pointer.target());
+
+            pointer.set(7L);
+
+            Assert.assertEquals(7L, pointer.get());
+            Assert.assertNotNull(pointer.target());
+            Assert.assertEquals(7L, pointer.target().address());
+
+            pointer.set(NULL);
+
+            Assert.assertEquals(NULL, pointer.get());
+            Assert.assertEquals(null, pointer.target());
+        }
     }
 
     private void testPlus() {
