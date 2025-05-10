@@ -19,7 +19,7 @@ public @Data class CPointer<C extends CObject> extends CObject {
     @Optional
     public C target() {
         long value = get();
-        return value == NULL ? null : metadata.factory().create(value);
+        return value == NULL ? null : metadata.constructor().create(value);
     }
 
     public long get() {

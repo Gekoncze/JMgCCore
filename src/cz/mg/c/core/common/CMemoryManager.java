@@ -18,7 +18,7 @@ public @Component class CMemoryManager implements AutoCloseable {
 
     public long allocate(long size) {
         long allocation = CMemory.allocate(size);
-        if (allocation == NULL) throw new NullPointerException("Could not allocate memory of size " + size + ".");
+        if (allocation == NULL) throw new IllegalArgumentException("Could not allocate memory of size " + size + ".");
         allocations.addLast(allocation);
         return allocation;
     }

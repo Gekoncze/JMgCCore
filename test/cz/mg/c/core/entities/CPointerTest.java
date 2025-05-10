@@ -2,6 +2,7 @@ package cz.mg.c.core.entities;
 
 import cz.mg.c.core.CTestLibrary;
 import cz.mg.c.core.Configuration;
+import cz.mg.c.core.common.CFactory;
 import cz.mg.c.core.common.CMemoryManager;
 import cz.mg.test.Assert;
 
@@ -35,10 +36,7 @@ public class CPointerTest {
 
     private void testGetAndSet() {
         try (CMemoryManager manager = new CMemoryManager()) {
-            CPointer<CObject> pointer = new CPointer<>(
-                manager.allocate(CPointer.sizeof()),
-                CObject.METADATA
-            );
+            CPointer<CObject> pointer = CFactory.createPointer(manager, CObject.METADATA);
 
             Assert.assertEquals(NULL, pointer.get());
             Assert.assertEquals(null, pointer.target());

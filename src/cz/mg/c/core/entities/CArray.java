@@ -15,6 +15,11 @@ public @Data class CArray<C extends CObject> extends CObject implements Readable
 
     public CArray(long address, int count, @Mandatory CMetadata<C> metadata) {
         super(address);
+
+        if (count < 0) {
+            throw new IllegalArgumentException("Count cannot be negative.");
+        }
+
         this.count = count;
         this.metadata = metadata;
     }
@@ -24,17 +29,13 @@ public @Data class CArray<C extends CObject> extends CObject implements Readable
         return count;
     }
 
-    public @Mandatory CMetadata<C> getMetadata() {
-        return metadata;
-    }
-
     @Override
     public @Mandatory C get(int i) {
         if (i < 0 || i >= count) {
             throw new ArrayIndexOutOfBoundsException("Index " + i + " out of " + count + " elements.");
         }
 
-        return metadata.factory().create(
+        return metadata.constructor().create(
             CPointer.nativePlus(address, i * metadata.size())
         );
     }
