@@ -3,7 +3,6 @@ package cz.mg.c.core.entities;
 import cz.mg.annotations.classes.Data;
 import cz.mg.annotations.requirement.Mandatory;
 import cz.mg.c.core.entities.metadata.CMetadata;
-import cz.mg.c.core.common.CAddress;
 import cz.mg.collections.array.ReadableArray;
 
 import java.util.Iterator;
@@ -36,7 +35,7 @@ public @Data class CArray<C extends CObject> extends CObject implements Readable
         }
 
         return metadata.getFactory().create(
-            CAddress.plus(address, i * metadata.getSize())
+            CPointer.nativePlus(address, i * metadata.getSize())
         );
     }
 

@@ -4,7 +4,7 @@ import cz.mg.annotations.classes.Entity;
 import cz.mg.annotations.requirement.Required;
 import cz.mg.annotations.storage.Value;
 
-import static cz.mg.c.core.common.CAddress.NULL;
+import static cz.mg.c.core.entities.CPointer.NULL;
 
 public @Entity class CObject {
     @Required @Value

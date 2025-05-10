@@ -4,7 +4,7 @@ import cz.mg.c.core.CLibrary;
 import cz.mg.c.core.Configuration;
 import cz.mg.test.Assert;
 
-import static cz.mg.c.core.common.CAddress.NULL;
+import static cz.mg.c.core.entities.CPointer.NULL;
 
 public class CMemoryTest {
     public static void main(String[] args) {

@@ -1,7 +1,7 @@
 package cz.mg.c.core;
 
 import cz.mg.annotations.classes.Test;
-import cz.mg.c.core.common.CAddressTest;
+import cz.mg.c.core.common.CPointerTest;
 import cz.mg.c.core.common.CConvertTest;
 import cz.mg.c.core.common.CMemoryTest;
 
@@ -11,8 +11,10 @@ public @Test class AllTests {
         CLibraryTest.main(args);
 
         // cz.mg.c.core.common
-        CAddressTest.main(args);
         CConvertTest.main(args);
         CMemoryTest.main(args);
+
+        // cz.mg.c.core.entities
+        CPointerTest.main(args);
     }
 }

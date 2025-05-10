@@ -5,9 +5,9 @@ import cz.mg.annotations.requirement.Mandatory;
 import cz.mg.annotations.requirement.Optional;
 import cz.mg.c.core.entities.metadata.CMetadata;
 
-import static cz.mg.c.core.common.CAddress.NULL;
-
 public @Data class CPointer<C extends CObject> extends CObject {
+    public static long NULL = 0L;
+
     @Mandatory
     private final CMetadata<C> metadata;
 
@@ -15,6 +15,7 @@ public @Data class CPointer<C extends CObject> extends CObject {
         super(address);
         this.metadata = metadata;
     }
+
 
     public @Mandatory CMetadata<C> getMetadata() {
         return metadata;
@@ -37,4 +38,5 @@ public @Data class CPointer<C extends CObject> extends CObject {
     public static native long nativeSizeof();
     public static native long nativeGet(long address);
     public static native void nativeSet(long address, long value);
+    public static native long nativePlus(long address, long delta);
 }

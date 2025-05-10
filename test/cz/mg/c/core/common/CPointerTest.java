@@ -2,17 +2,18 @@ package cz.mg.c.core.common;
 
 import cz.mg.c.core.CTestLibrary;
 import cz.mg.c.core.Configuration;
+import cz.mg.c.core.entities.CPointer;
 import cz.mg.test.Assert;
 
-import static cz.mg.c.core.common.CAddress.NULL;
+import static cz.mg.c.core.entities.CPointer.NULL;
 
-public class CAddressTest {
+public class CPointerTest {
     public static void main(String[] args) {
-        System.out.print("Running " + CAddressTest.class.getSimpleName() + " ... ");
+        System.out.print("Running " + CPointerTest.class.getSimpleName() + " ... ");
 
         CTestLibrary.load(Configuration.LIBRARY_PATH);
 
-        CAddressTest test = new CAddressTest();
+        CPointerTest test = new CPointerTest();
         test.testNull();
         test.testPlus();
 
@@ -28,11 +29,11 @@ public class CAddressTest {
 
     private void testPlus() {
         long half = getPointerHalf();
-        Assert.assertEquals(true, verifyHalfPlusZero(CAddress.plus(half, 0)));
-        Assert.assertEquals(true, verifyHalfPlusOne(CAddress.plus(half, 1)));
-        Assert.assertEquals(true, verifyHalfMinusOne(CAddress.plus(half, -1)));
-        Assert.assertEquals(true, verifyHalfPlusSeven(CAddress.plus(half, 7)));
-        Assert.assertEquals(true, verifyHalfMinusSeven(CAddress.plus(half, -7)));
+        Assert.assertEquals(true, verifyHalfPlusZero(CPointer.nativePlus(half, 0)));
+        Assert.assertEquals(true, verifyHalfPlusOne(CPointer.nativePlus(half, 1)));
+        Assert.assertEquals(true, verifyHalfMinusOne(CPointer.nativePlus(half, -1)));
+        Assert.assertEquals(true, verifyHalfPlusSeven(CPointer.nativePlus(half, 7)));
+        Assert.assertEquals(true, verifyHalfMinusSeven(CPointer.nativePlus(half, -7)));
     }
 
     private static native long getNull();
