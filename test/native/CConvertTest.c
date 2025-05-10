@@ -1,6 +1,6 @@
 #include "CConvert.h"
 
-JNIEXPORT jboolean JNICALL Java_cz_mg_c_core_common_CConvertTest_verifyAddressSize(JNIEnv* env, jclass clazz) {
+JNIEXPORT jboolean JNICALL Java_cz_mg_c_core_common_CConvertTest_verifyPointerSize(JNIEnv* env, jclass clazz) {
     return sizeof(void*) == sizeof(jlong) ? JNI_TRUE : JNI_FALSE;
 }
 
@@ -51,59 +51,59 @@ static void* getPointerMax() {
 }
 
 JNIEXPORT jlong JNICALL Java_cz_mg_c_core_common_CConvertTest_getPointerMin(JNIEnv* env, jclass clazz) {
-    return a2l(getPointerMin());
+    return p2l(getPointerMin());
 }
 
 JNIEXPORT jlong JNICALL Java_cz_mg_c_core_common_CConvertTest_getPointerMinPlusOne(JNIEnv* env, jclass clazz) {
-    return a2l(getPointerMinPlusOne());
+    return p2l(getPointerMinPlusOne());
 }
 
 JNIEXPORT jlong JNICALL Java_cz_mg_c_core_common_CConvertTest_getPointerHalfMinusOne(JNIEnv* env, jclass clazz) {
-    return a2l(getPointerHalfMinusOne());
+    return p2l(getPointerHalfMinusOne());
 }
 
 JNIEXPORT jlong JNICALL Java_cz_mg_c_core_common_CConvertTest_getPointerHalf(JNIEnv* env, jclass clazz) {
-    return a2l(getPointerHalf());
+    return p2l(getPointerHalf());
 }
 
 JNIEXPORT jlong JNICALL Java_cz_mg_c_core_common_CConvertTest_getPointerHalfPlusOne(JNIEnv* env, jclass clazz) {
-    return a2l(getPointerHalfPlusOne());
+    return p2l(getPointerHalfPlusOne());
 }
 
 JNIEXPORT jlong JNICALL Java_cz_mg_c_core_common_CConvertTest_getPointerMaxMinusOne(JNIEnv* env, jclass clazz) {
-    return a2l(getPointerMaxMinusOne());
+    return p2l(getPointerMaxMinusOne());
 }
 
 JNIEXPORT jlong JNICALL Java_cz_mg_c_core_common_CConvertTest_getPointerMax(JNIEnv* env, jclass clazz) {
-    return a2l(getPointerMax());
+    return p2l(getPointerMax());
 }
 
 JNIEXPORT jboolean JNICALL Java_cz_mg_c_core_common_CConvertTest_verifyPointerMin(JNIEnv* env, jclass clazz, jlong value) {
-    return getPointerMin() == l2a(value) ? JNI_TRUE : JNI_FALSE;
+    return getPointerMin() == l2p(value) ? JNI_TRUE : JNI_FALSE;
 }
 
 JNIEXPORT jboolean JNICALL Java_cz_mg_c_core_common_CConvertTest_verifyPointerMinPlusOne(JNIEnv* env, jclass clazz, jlong value) {
-    return getPointerMinPlusOne() == l2a(value) ? JNI_TRUE : JNI_FALSE;
+    return getPointerMinPlusOne() == l2p(value) ? JNI_TRUE : JNI_FALSE;
 }
 
 JNIEXPORT jboolean JNICALL Java_cz_mg_c_core_common_CConvertTest_verifyPointerHalfMinusOne(JNIEnv* env, jclass clazz, jlong value) {
-    return getPointerHalfMinusOne() == l2a(value) ? JNI_TRUE : JNI_FALSE;
+    return getPointerHalfMinusOne() == l2p(value) ? JNI_TRUE : JNI_FALSE;
 }
 
 JNIEXPORT jboolean JNICALL Java_cz_mg_c_core_common_CConvertTest_verifyPointerHalf(JNIEnv* env, jclass clazz, jlong value) {
-    return getPointerHalf() == l2a(value) ? JNI_TRUE : JNI_FALSE;
+    return getPointerHalf() == l2p(value) ? JNI_TRUE : JNI_FALSE;
 }
 
 JNIEXPORT jboolean JNICALL Java_cz_mg_c_core_common_CConvertTest_verifyPointerHalfPlusOne(JNIEnv* env, jclass clazz, jlong value) {
-    return getPointerHalfPlusOne() == l2a(value) ? JNI_TRUE : JNI_FALSE;
+    return getPointerHalfPlusOne() == l2p(value) ? JNI_TRUE : JNI_FALSE;
 }
 
 JNIEXPORT jboolean JNICALL Java_cz_mg_c_core_common_CConvertTest_verifyPointerMaxMinusOne(JNIEnv* env, jclass clazz, jlong value) {
-    return getPointerMaxMinusOne() == l2a(value) ? JNI_TRUE : JNI_FALSE;
+    return getPointerMaxMinusOne() == l2p(value) ? JNI_TRUE : JNI_FALSE;
 }
 
 JNIEXPORT jboolean JNICALL Java_cz_mg_c_core_common_CConvertTest_verifyPointerMax(JNIEnv* env, jclass clazz, jlong value) {
-    return getPointerMax() == l2a(value) ? JNI_TRUE : JNI_FALSE;
+    return getPointerMax() == l2p(value) ? JNI_TRUE : JNI_FALSE;
 }
 
 static size_t getSizeMin() {

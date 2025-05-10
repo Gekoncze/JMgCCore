@@ -1,6 +1,6 @@
 #include "CConvert.h"
 
-void* l2a(jlong l) {
+void* l2p(jlong l) {
     union {
         jlong l;
         void* a;
@@ -9,7 +9,7 @@ void* l2a(jlong l) {
     return c.a;
 }
 
-jlong a2l(void* a) {
+jlong p2l(void* a) {
     union {
         jlong l;
         void* a;

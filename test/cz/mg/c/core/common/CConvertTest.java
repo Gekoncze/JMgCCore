@@ -13,19 +13,19 @@ public class CConvertTest {
 
         CConvertTest test = new CConvertTest();
         test.testSize();
-        test.testConvertAddress();
+        test.testConvertPointer();
         test.testConvertSize();
 
         System.out.println("OK");
     }
 
     private void testSize() {
-        Assert.assertEquals(true, verifyAddressSize());
+        Assert.assertEquals(true, verifyPointerSize());
         Assert.assertEquals(true, verifySizeSize());
         Assert.assertEquals(true, verifyJLongSize());
     }
 
-    private void testConvertAddress() {
+    private void testConvertPointer() {
         Assert.assertEquals(true, verifyPointerMin(getPointerMin()));
         Assert.assertEquals(true, verifyPointerMinPlusOne(move(getPointerMinPlusOne())));
         Assert.assertEquals(true, verifyPointerHalfMinusOne(move(getPointerHalfMinusOne())));
@@ -60,7 +60,7 @@ public class CConvertTest {
         return new CObject(value).address();
     }
 
-    private static native boolean verifyAddressSize();
+    private static native boolean verifyPointerSize();
     private static native boolean verifySizeSize();
     private static native boolean verifyJLongSize();
 

@@ -2,7 +2,6 @@
     ...
 
 ### SOON ###
-    consider adding sizeof to CObject
     add CObject test
     implement CArray and add test
     implement CPointer and add test
