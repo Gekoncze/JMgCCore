@@ -8,6 +8,10 @@ import cz.mg.collections.array.ReadableArray;
 import java.util.Iterator;
 
 public @Data class CArray<C extends CObject> extends CObject implements ReadableArray<C> {
+    public static <C extends CObject> @Mandatory CMetadata<CArray<C>> METADATA(@Mandatory CMetadata<C> metadata, int count) {
+        return new CMetadata<>(address -> new CArray<>(address, count, metadata), count * metadata.size());
+    }
+
     private final int count;
 
     @Mandatory

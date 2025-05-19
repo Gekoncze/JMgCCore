@@ -8,6 +8,10 @@ import cz.mg.c.core.entities.metadata.CMetadata;
 public @Data class CPointer<C extends CObject> extends CObject {
     public static long NULL = 0L;
 
+    public static <C extends CObject> @Mandatory CMetadata<CPointer<C>> METADATA(@Mandatory CMetadata<C> metadata) {
+        return new CMetadata<>(address -> new CPointer<>(address, metadata), sizeof());
+    }
+
     @Mandatory
     private final CMetadata<C> metadata;
 

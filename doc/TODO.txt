@@ -2,7 +2,8 @@
     ...
 
 ### SOON ###
-    add factory test
+    add test for pointer metadata method
+    add test for array metadata method
     add memory manager test
     extend CMemory test
 

@@ -21,7 +21,7 @@ public @Static class CFactory {
         @Mandatory CMetadata<T> metadata,
         int count
     ) {
-        long address = manager.allocate(Math.min(count * metadata.size(), 1));
+        long address = manager.allocate(Math.max(count * metadata.size(), 1));
         return new CArray<>(address, count, metadata);
     }
 

@@ -19,6 +19,7 @@ public class CArrayTest {
         test.testSingle();
         test.testMultiple();
         test.testMultipleBigger();
+        test.testMetadata();
 
         System.out.println("OK");
     }
@@ -76,6 +77,15 @@ public class CArrayTest {
             Assert.assertEquals(CPointer.nativePlus(array.address(), 16), array.get(2).address());
             Assert.assertThatCode(() -> array.get(3)).throwsException(ArrayIndexOutOfBoundsException.class);
         }
+    }
+
+    private void testMetadata() {
+        CMetadata<CArray<CPointer<CObject>>> metadata = CArray.METADATA(CPointer.METADATA(CObject.METADATA), 3);
+        Assert.assertEquals(24, metadata.size());
+
+        CArray<CPointer<CObject>> array = metadata.constructor().create(777L);
+        Assert.assertEquals(777L, array.address());
+        Assert.assertEquals(3, array.count());
     }
 
     private int count(Iterable<?> iterable) {

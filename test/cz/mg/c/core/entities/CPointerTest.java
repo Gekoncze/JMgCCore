@@ -4,6 +4,7 @@ import cz.mg.c.core.CTestLibrary;
 import cz.mg.c.core.Configuration;
 import cz.mg.c.core.common.CFactory;
 import cz.mg.c.core.common.CMemoryManager;
+import cz.mg.c.core.entities.metadata.CMetadata;
 import cz.mg.test.Assert;
 
 import static cz.mg.c.core.entities.CPointer.NULL;
@@ -19,6 +20,7 @@ public class CPointerTest {
         test.testSizeof();
         test.testGetAndSet();
         test.testPlus();
+        test.testMetadata();
 
         System.out.println("OK");
     }
@@ -61,6 +63,14 @@ public class CPointerTest {
         Assert.assertEquals(true, verifyHalfMinusOne(CPointer.nativePlus(half, -1)));
         Assert.assertEquals(true, verifyHalfPlusSeven(CPointer.nativePlus(half, 7)));
         Assert.assertEquals(true, verifyHalfMinusSeven(CPointer.nativePlus(half, -7)));
+    }
+
+    private void testMetadata() {
+        CMetadata<CPointer<CObject>> metadata = CPointer.METADATA(CObject.METADATA);
+        Assert.assertEquals(8L, metadata.size());
+
+        CPointer<CObject> pointer = metadata.constructor().create(777L);
+        Assert.assertEquals(777L, pointer.address());
     }
 
     private static native long getNull();
