@@ -27,7 +27,7 @@ public class CFactoryTest {
         try (CMemoryManager manager = new CMemoryManager()) {
             CPointer<CObject> pointer = CFactory.createPointer(manager, CObject.METADATA);
             Assert.assertEquals(1, manager.getAllocations().count());
-            Assert.assertEquals(8L, manager.getTotalSize());
+            Assert.assertEquals(8L, manager.getAllocations().getFirst().size());
             Assert.assertEquals(NULL, pointer.get());
             Assert.assertEquals(null, pointer.target());
         }
@@ -37,7 +37,7 @@ public class CFactoryTest {
         try (CMemoryManager manager = new CMemoryManager()) {
             CArray<CPointer<CObject>> array = CFactory.createArray(manager, CPointer.METADATA(CObject.METADATA), 3);
             Assert.assertEquals(1, manager.getAllocations().count());
-            Assert.assertEquals(24L, manager.getTotalSize());
+            Assert.assertEquals(24L, manager.getAllocations().getFirst().size());
             Assert.assertEquals(3, array.count());
             Assert.assertEquals(NULL, array.get(0).get());
             Assert.assertEquals(NULL, array.get(1).get());
@@ -49,7 +49,7 @@ public class CFactoryTest {
         try (CMemoryManager manager = new CMemoryManager()) {
             CObject object = CFactory.createObject(manager, CObject.METADATA);
             Assert.assertEquals(1, manager.getAllocations().count());
-            Assert.assertEquals(1L, manager.getTotalSize());
+            Assert.assertEquals(1L, manager.getAllocations().getFirst().size());
             Assert.assertNotEquals(NULL, object.address());
         }
     }
