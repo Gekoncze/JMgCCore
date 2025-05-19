@@ -2,7 +2,7 @@
     ...
 
 ### SOON ###
-    ...
+    implement types and add tests
 
 ### LATER ###
-    implement types and add tests
+    ...
