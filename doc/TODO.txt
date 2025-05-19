@@ -2,7 +2,7 @@
     ...
 
 ### SOON ###
-    add memory manager test
+    ...
 
 ### LATER ###
     implement types and add tests

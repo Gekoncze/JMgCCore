@@ -32,7 +32,9 @@ public @Component class CMemoryManager implements AutoCloseable {
 
     @Override
     public void close() {
-        for (Long allocation : allocations) {
+        totalSize = 0L;
+        while (!allocations.isEmpty()) {
+            long allocation = allocations.removeFirst();
             CMemory.free(allocation);
         }
     }
