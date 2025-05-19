@@ -2,10 +2,7 @@
     ...
 
 ### SOON ###
-    add test for pointer metadata method
-    add test for array metadata method
     add memory manager test
-    extend CMemory test
 
 ### LATER ###
     implement types and add tests
