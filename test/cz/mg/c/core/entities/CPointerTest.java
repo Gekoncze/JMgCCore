@@ -81,6 +81,10 @@ public class CPointerTest {
             Assert.assertEquals(2L, pointer.target(0).get());
             Assert.assertEquals(7L, pointer.target(1).get());
             Assert.assertEquals(13L, pointer.target(2).get());
+            Assert.assertEquals(address, pointer.target().address());
+            Assert.assertEquals(CPointer.nativePlus(address, 0), pointer.target(0).address());
+            Assert.assertEquals(CPointer.nativePlus(address, 8), pointer.target(1).address());
+            Assert.assertEquals(CPointer.nativePlus(address, 16), pointer.target(2).address());
         }
     }
 
