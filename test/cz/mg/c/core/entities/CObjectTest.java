@@ -9,10 +9,26 @@ public class CObjectTest {
         System.out.print("Running " + CObjectTest.class.getSimpleName() + " ... ");
 
         CObjectTest test = new CObjectTest();
+        test.testSize();
+        test.testConstructor();
+        test.testMetadata();
         test.testNull();
         test.testNonnull();
 
         System.out.println("OK");
+    }
+
+    private void testSize() {
+        Assert.assertEquals(1L, CObject.SIZE);
+    }
+
+    private void testConstructor() {
+        Assert.assertEquals(123L, CObject.CONSTRUCTOR.create(123L).address());
+    }
+
+    private void testMetadata() {
+        Assert.assertEquals(1L, CObject.METADATA.size());
+        Assert.assertEquals(123L, CObject.METADATA.constructor().create(123L).address());
     }
 
     private void testNull() {
@@ -21,7 +37,6 @@ public class CObjectTest {
     }
 
     private void testNonnull() {
-        CObject object = new CObject(7L);
-        Assert.assertEquals(7L, object.address());
+        Assert.assertEquals(7L, new CObject(7L).address());
     }
 }

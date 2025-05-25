@@ -4,6 +4,7 @@ import cz.mg.c.core.CTestLibrary;
 import cz.mg.c.core.Configuration;
 import cz.mg.c.core.common.CFactory;
 import cz.mg.c.core.common.CMemoryManager;
+import cz.mg.c.core.entities.metadata.CConstructor;
 import cz.mg.c.core.entities.metadata.CMetadata;
 import cz.mg.test.Assert;
 
@@ -14,14 +15,35 @@ public class CArrayTest {
         CTestLibrary.load(Configuration.LIBRARY_PATH);
 
         CArrayTest test = new CArrayTest();
+        test.testSize();
+        test.testConstructor();
+        test.testMetadata();
         test.testNegativeCount();
         test.testEmpty();
         test.testSingle();
         test.testMultiple();
         test.testMultipleBigger();
-        test.testMetadata();
 
         System.out.println("OK");
+    }
+
+    private void testSize() {
+        Assert.assertEquals(16L, CArray.SIZE(CPointer.METADATA(CObject.METADATA), 2));
+    }
+
+    private void testConstructor() {
+        CConstructor<CArray<CPointer<CObject>>> constructor = CArray.CONSTRUCTOR(CPointer.METADATA(CObject.METADATA), 7);
+        CArray<CPointer<CObject>> array = constructor.create(123L);
+        Assert.assertEquals(123, array.address());
+        Assert.assertEquals(7, array.count());
+    }
+
+    private void testMetadata() {
+        CMetadata<CArray<CPointer<CObject>>> metadata = CArray.METADATA(CPointer.METADATA(CObject.METADATA), 3);
+        CArray<CPointer<CObject>> array = metadata.constructor().create(777L);
+        Assert.assertEquals(24, metadata.size());
+        Assert.assertEquals(777L, array.address());
+        Assert.assertEquals(3, array.count());
     }
 
     private void testNegativeCount() {
@@ -68,7 +90,7 @@ public class CArrayTest {
 
     private void testMultipleBigger() {
         try (CMemoryManager manager = new CMemoryManager()) {
-            CArray<CObject> array = CFactory.createArray(manager, new CMetadata<>(CObject::new, 8), 3);
+            CArray<CObject> array = CFactory.createArray(manager, new CMetadata<>(8, CObject.CONSTRUCTOR), 3);
             Assert.assertEquals(3, array.count());
             Assert.assertEquals(3, count(array));
             Assert.assertThatCode(() -> array.get(-1)).throwsException(ArrayIndexOutOfBoundsException.class);
@@ -77,15 +99,6 @@ public class CArrayTest {
             Assert.assertEquals(CPointer.nativePlus(array.address(), 16), array.get(2).address());
             Assert.assertThatCode(() -> array.get(3)).throwsException(ArrayIndexOutOfBoundsException.class);
         }
-    }
-
-    private void testMetadata() {
-        CMetadata<CArray<CPointer<CObject>>> metadata = CArray.METADATA(CPointer.METADATA(CObject.METADATA), 3);
-        Assert.assertEquals(24, metadata.size());
-
-        CArray<CPointer<CObject>> array = metadata.constructor().create(777L);
-        Assert.assertEquals(777L, array.address());
-        Assert.assertEquals(3, array.count());
     }
 
     private int count(Iterable<?> iterable) {

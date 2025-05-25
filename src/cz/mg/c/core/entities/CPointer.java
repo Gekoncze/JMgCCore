@@ -2,14 +2,19 @@ package cz.mg.c.core.entities;
 
 import cz.mg.annotations.classes.Data;
 import cz.mg.annotations.requirement.Mandatory;
-import cz.mg.annotations.requirement.Optional;
+import cz.mg.c.core.entities.metadata.CConstructor;
 import cz.mg.c.core.entities.metadata.CMetadata;
 
 public @Data class CPointer<C extends CObject> extends CObject {
     public static long NULL = 0L;
+    public static long SIZE = nativeSize();
+
+    public static <C extends CObject> @Mandatory CConstructor<CPointer<C>> CONSTRUCTOR(@Mandatory CMetadata<C> targetMetadata) {
+        return address -> new CPointer<>(address, targetMetadata);
+    }
 
     public static <C extends CObject> @Mandatory CMetadata<CPointer<C>> METADATA(@Mandatory CMetadata<C> targetMetadata) {
-        return new CMetadata<>(address -> new CPointer<>(address, targetMetadata), nativeSizeof());
+        return new CMetadata<>(SIZE, CONSTRUCTOR(targetMetadata));
     }
 
     @Mandatory
@@ -20,9 +25,13 @@ public @Data class CPointer<C extends CObject> extends CObject {
         this.targetMetadata = targetMetadata;
     }
 
-    @Optional
     public C target() {
         long value = get();
+        return value == NULL ? null : targetMetadata.constructor().create(value);
+    }
+
+    public C target(int i) {
+        long value = nativePlus(get(), i * targetMetadata.size());
         return value == NULL ? null : targetMetadata.constructor().create(value);
     }
 
@@ -34,7 +43,7 @@ public @Data class CPointer<C extends CObject> extends CObject {
         nativeSet(address, value);
     }
 
-    public static native long nativeSizeof();
+    public static native long nativeSize();
     public static native long nativeGet(long address);
     public static native void nativeSet(long address, long value);
     public static native long nativePlus(long address, long delta);

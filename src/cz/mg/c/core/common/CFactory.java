@@ -12,7 +12,7 @@ public @Static class CFactory {
         @Mandatory CMemoryManager manager,
         @Mandatory CMetadata<T> metadata
     ) {
-        long address = manager.allocate(CPointer.nativeSizeof());
+        long address = manager.allocate(CPointer.nativeSize());
         return new CPointer<>(address, metadata);
     }
 

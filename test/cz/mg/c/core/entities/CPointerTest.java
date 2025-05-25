@@ -17,10 +17,12 @@ public class CPointerTest {
 
         CPointerTest test = new CPointerTest();
         test.testNull();
-        test.testSizeof();
-        test.testGetAndSet();
-        test.testPlus();
+        test.testSize();
+        test.testConstructor();
         test.testMetadata();
+        test.testGetAndSet();
+        test.testTarget();
+        test.testPlus();
 
         System.out.println("OK");
     }
@@ -32,8 +34,19 @@ public class CPointerTest {
         Assert.assertEquals(false, verifyNull2(1));
     }
 
-    private void testSizeof() {
-        Assert.assertEquals(8L, CPointer.nativeSizeof());
+    private void testSize() {
+        Assert.assertEquals(8L, CPointer.SIZE);
+        Assert.assertEquals(8L, CPointer.nativeSize());
+    }
+
+    private void testConstructor() {
+        Assert.assertEquals(123L, CPointer.CONSTRUCTOR(CObject.METADATA).create(123L).address());
+    }
+
+    private void testMetadata() {
+        CMetadata<CPointer<CObject>> metadata = CPointer.METADATA(CObject.METADATA);
+        Assert.assertEquals(8L, metadata.size());
+        Assert.assertEquals(777L, metadata.constructor().create(777L).address());
     }
 
     private void testGetAndSet() {
@@ -56,6 +69,21 @@ public class CPointerTest {
         }
     }
 
+    private void testTarget() {
+        try (CMemoryManager manager = new CMemoryManager()) {
+            long address = manager.allocate(CPointer.SIZE * 3);
+            CPointer<CPointer<CObject>> pointer = CFactory.createPointer(manager, CPointer.METADATA(CObject.METADATA));
+            pointer.set(address);
+            pointer.target(0).set(2L);
+            pointer.target(1).set(7L);
+            pointer.target(2).set(13L);
+            Assert.assertEquals(2L, pointer.target().get());
+            Assert.assertEquals(2L, pointer.target(0).get());
+            Assert.assertEquals(7L, pointer.target(1).get());
+            Assert.assertEquals(13L, pointer.target(2).get());
+        }
+    }
+
     private void testPlus() {
         long half = getPointerHalf();
         Assert.assertEquals(true, verifyHalfPlusZero(CPointer.nativePlus(half, 0)));
@@ -63,14 +91,6 @@ public class CPointerTest {
         Assert.assertEquals(true, verifyHalfMinusOne(CPointer.nativePlus(half, -1)));
         Assert.assertEquals(true, verifyHalfPlusSeven(CPointer.nativePlus(half, 7)));
         Assert.assertEquals(true, verifyHalfMinusSeven(CPointer.nativePlus(half, -7)));
-    }
-
-    private void testMetadata() {
-        CMetadata<CPointer<CObject>> metadata = CPointer.METADATA(CObject.METADATA);
-        Assert.assertEquals(8L, metadata.size());
-
-        CPointer<CObject> pointer = metadata.constructor().create(777L);
-        Assert.assertEquals(777L, pointer.address());
     }
 
     private static native long getNull();

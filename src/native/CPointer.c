@@ -1,6 +1,6 @@
 #include "CConvert.h"
 
-JNIEXPORT jlong JNICALL Java_cz_mg_c_core_entities_CPointer_nativeSizeof(JNIEnv* env, jclass clazz) {
+JNIEXPORT jlong JNICALL Java_cz_mg_c_core_entities_CPointer_nativeSize(JNIEnv* env, jclass clazz) {
     return sizeof(void*);
 }
 
