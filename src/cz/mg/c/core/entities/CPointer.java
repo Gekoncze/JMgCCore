@@ -8,22 +8,22 @@ import cz.mg.c.core.entities.metadata.CMetadata;
 public @Data class CPointer<C extends CObject> extends CObject {
     public static long NULL = 0L;
 
-    public static <C extends CObject> @Mandatory CMetadata<CPointer<C>> METADATA(@Mandatory CMetadata<C> metadata) {
-        return new CMetadata<>(address -> new CPointer<>(address, metadata), sizeof());
+    public static <C extends CObject> @Mandatory CMetadata<CPointer<C>> METADATA(@Mandatory CMetadata<C> targetMetadata) {
+        return new CMetadata<>(address -> new CPointer<>(address, targetMetadata), nativeSizeof());
     }
 
     @Mandatory
-    private final CMetadata<C> metadata;
+    private final CMetadata<C> targetMetadata;
 
-    public CPointer(long address, @Mandatory CMetadata<C> metadata) {
+    public CPointer(long address, @Mandatory CMetadata<C> targetMetadata) {
         super(address);
-        this.metadata = metadata;
+        this.targetMetadata = targetMetadata;
     }
 
     @Optional
     public C target() {
         long value = get();
-        return value == NULL ? null : metadata.constructor().create(value);
+        return value == NULL ? null : targetMetadata.constructor().create(value);
     }
 
     public long get() {
@@ -34,7 +34,7 @@ public @Data class CPointer<C extends CObject> extends CObject {
         nativeSet(address, value);
     }
 
-    public static native long sizeof();
+    public static native long nativeSizeof();
     public static native long nativeGet(long address);
     public static native void nativeSet(long address, long value);
     public static native long nativePlus(long address, long delta);

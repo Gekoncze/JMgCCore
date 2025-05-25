@@ -33,7 +33,7 @@ public class CPointerTest {
     }
 
     private void testSizeof() {
-        Assert.assertEquals(8L, CPointer.sizeof());
+        Assert.assertEquals(8L, CPointer.nativeSizeof());
     }
 
     private void testGetAndSet() {

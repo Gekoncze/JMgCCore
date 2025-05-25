@@ -1,13 +1,12 @@
 #include "CConvert.h"
 
-JNIEXPORT jlong JNICALL Java_cz_mg_c_core_entities_CPointer_sizeof(JNIEnv* env, jclass clazz) {
+JNIEXPORT jlong JNICALL Java_cz_mg_c_core_entities_CPointer_nativeSizeof(JNIEnv* env, jclass clazz) {
     return sizeof(void*);
 }
 
 JNIEXPORT jlong JNICALL Java_cz_mg_c_core_entities_CPointer_nativeGet(JNIEnv* env, jclass clazz, jlong address) {
     void** ptrptr = (void**) l2p(address);
-    void* ptr = *ptrptr;
-    return p2l(ptr);
+    return p2l(*ptrptr);
 }
 
 JNIEXPORT void JNICALL Java_cz_mg_c_core_entities_CPointer_nativeSet(JNIEnv* env, jclass clazz, jlong address, jlong value) {

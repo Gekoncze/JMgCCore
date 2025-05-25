@@ -8,16 +8,16 @@ import cz.mg.collections.array.ReadableArray;
 import java.util.Iterator;
 
 public @Data class CArray<C extends CObject> extends CObject implements ReadableArray<C> {
-    public static <C extends CObject> @Mandatory CMetadata<CArray<C>> METADATA(@Mandatory CMetadata<C> metadata, int count) {
-        return new CMetadata<>(address -> new CArray<>(address, count, metadata), count * metadata.size());
+    public static <C extends CObject> @Mandatory CMetadata<CArray<C>> METADATA(@Mandatory CMetadata<C> targetMetadata, int count) {
+        return new CMetadata<>(address -> new CArray<>(address, count, targetMetadata), count * targetMetadata.size());
     }
 
     private final int count;
 
     @Mandatory
-    private final CMetadata<C> metadata;
+    private final CMetadata<C> targetMetadata;
 
-    public CArray(long address, int count, @Mandatory CMetadata<C> metadata) {
+    public CArray(long address, int count, @Mandatory CMetadata<C> targetMetadata) {
         super(address);
 
         if (count < 0) {
@@ -25,7 +25,7 @@ public @Data class CArray<C extends CObject> extends CObject implements Readable
         }
 
         this.count = count;
-        this.metadata = metadata;
+        this.targetMetadata = targetMetadata;
     }
 
     @Override
@@ -39,8 +39,8 @@ public @Data class CArray<C extends CObject> extends CObject implements Readable
             throw new ArrayIndexOutOfBoundsException("Index " + i + " out of " + count + " elements.");
         }
 
-        return metadata.constructor().create(
-            CPointer.nativePlus(address, i * metadata.size())
+        return targetMetadata.constructor().create(
+            CPointer.nativePlus(address, i * targetMetadata.size())
         );
     }
 
