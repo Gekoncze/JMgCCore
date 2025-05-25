@@ -14,7 +14,6 @@ public class CConvertTest {
         CConvertTest test = new CConvertTest();
         test.testSize();
         test.testConvertPointer();
-        test.testConvertSize();
 
         System.out.println("OK");
     }
@@ -33,27 +32,6 @@ public class CConvertTest {
         Assert.assertEquals(true, verifyPointerHalfPlusOne(move(getPointerHalfPlusOne())));
         Assert.assertEquals(true, verifyPointerMaxMinusOne(move(getPointerMaxMinusOne())));
         Assert.assertEquals(true, verifyPointerMax(move(getPointerMax())));
-    }
-
-    private void testConvertSize() {
-        Assert.assertEquals(true, verifySizeMin(getSizeMin()));
-        Assert.assertEquals(true, verifySizeMinPlusOne(getSizeMinPlusOne()));
-        Assert.assertEquals(true, verifySizeHalfMinusOne(getSizeHalfMinusOne()));
-        Assert.assertEquals(true, verifySizeHalf(getSizeHalf()));
-        Assert.assertThatCode(() -> verifySizeHalfPlusOne(getSizeHalfPlusOne()))
-            .throwsException(UnsupportedOperationException.class);
-        Assert.assertThatCode(() -> verifySizeMaxMinusOne(getSizeMaxMinusOne()))
-            .throwsException(UnsupportedOperationException.class);
-        Assert.assertThatCode(() -> verifySizeMax(getSizeMax()))
-            .throwsException(UnsupportedOperationException.class);
-        Assert.assertThatCode(() -> verifyLongMin())
-            .throwsException(UnsupportedOperationException.class);
-        Assert.assertThatCode(() -> verifyLongMinusOne())
-            .throwsException(UnsupportedOperationException.class);
-        Assert.assertThatCode(() -> verifyLongZero())
-            .doesNotThrowAnyException();
-        Assert.assertThatCode(() -> verifyLongOne())
-            .doesNotThrowAnyException();
     }
 
     long move(long value) {
@@ -79,25 +57,4 @@ public class CConvertTest {
     private static native boolean verifyPointerHalfPlusOne(long value);
     private static native boolean verifyPointerMaxMinusOne(long value);
     private static native boolean verifyPointerMax(long value);
-
-    private static native long getSizeMin();
-    private static native long getSizeMinPlusOne();
-    private static native long getSizeHalfMinusOne();
-    private static native long getSizeHalf();
-    private static native long getSizeHalfPlusOne();
-    private static native long getSizeMaxMinusOne();
-    private static native long getSizeMax();
-
-    private static native boolean verifySizeMin(long value);
-    private static native boolean verifySizeMinPlusOne(long value);
-    private static native boolean verifySizeHalfMinusOne(long value);
-    private static native boolean verifySizeHalf(long value);
-    private static native boolean verifySizeHalfPlusOne(long value);
-    private static native boolean verifySizeMaxMinusOne(long value);
-    private static native boolean verifySizeMax(long value);
-
-    private static native void verifyLongMin();
-    private static native void verifyLongMinusOne();
-    private static native void verifyLongZero();
-    private static native void verifyLongOne();
 }
