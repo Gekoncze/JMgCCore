@@ -9,11 +9,10 @@ import cz.mg.c.core.entities.CPointerTest;
 public @Test class AllTests {
     public static void main(String[] args) {
         // cz.mg.c.core
-        CLibraryTest.main(args);
+        CConvertTest.main(args);
 
         // cz.mg.c.core.common
         CFactoryTest.main(args);
-        CConvertTest.main(args);
         CMemoryManagerTest.main(args);
         CMemoryTest.main(args);
 

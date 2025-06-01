@@ -1,7 +1,5 @@
-package cz.mg.c.core.common;
+package cz.mg.c.core;
 
-import cz.mg.c.core.CTestLibrary;
-import cz.mg.c.core.Configuration;
 import cz.mg.c.core.entities.CObject;
 import cz.mg.test.Assert;
 
@@ -9,7 +7,7 @@ public class CConvertTest {
     public static void main(String[] args) {
         System.out.print("Running " + CConvertTest.class.getSimpleName() + " ... ");
 
-        CTestLibrary.load(Configuration.LIBRARY_PATH);
+        Configuration.loadLibrary();
 
         CConvertTest test = new CConvertTest();
         test.testSize();

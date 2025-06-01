@@ -1,6 +1,5 @@
 package cz.mg.c.core.common;
 
-import cz.mg.c.core.CLibrary;
 import cz.mg.c.core.Configuration;
 import cz.mg.c.core.entities.CArray;
 import cz.mg.c.core.entities.CObject;
@@ -13,7 +12,7 @@ public class CFactoryTest {
     public static void main(String[] args) {
         System.out.print("Running " + CFactoryTest.class.getSimpleName() + " ... ");
 
-        CLibrary.load(Configuration.LIBRARY_PATH);
+        Configuration.loadLibrary();
 
         CFactoryTest test = new CFactoryTest();
         test.testCreatePointer();

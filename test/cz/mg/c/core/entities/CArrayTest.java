@@ -1,6 +1,5 @@
 package cz.mg.c.core.entities;
 
-import cz.mg.c.core.CTestLibrary;
 import cz.mg.c.core.Configuration;
 import cz.mg.c.core.common.CFactory;
 import cz.mg.c.core.common.CMemoryManager;
@@ -12,7 +11,7 @@ public class CArrayTest {
     public static void main(String[] args) {
         System.out.print("Running " + CArrayTest.class.getSimpleName() + " ... ");
 
-        CTestLibrary.load(Configuration.LIBRARY_PATH);
+        Configuration.loadLibrary();
 
         CArrayTest test = new CArrayTest();
         test.testSize();

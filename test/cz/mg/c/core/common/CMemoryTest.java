@@ -1,6 +1,5 @@
 package cz.mg.c.core.common;
 
-import cz.mg.c.core.CLibrary;
 import cz.mg.c.core.Configuration;
 import cz.mg.test.Assert;
 
@@ -10,7 +9,7 @@ public class CMemoryTest {
     public static void main(String[] args) {
         System.out.print("Running " + CMemoryTest.class.getSimpleName() + " ... ");
 
-        CLibrary.load(Configuration.LIBRARY_PATH);
+        Configuration.loadLibrary();
 
         CMemoryTest test = new CMemoryTest();
         test.testAllocateAndFree();
