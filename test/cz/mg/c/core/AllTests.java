@@ -5,10 +5,7 @@ import cz.mg.c.core.common.*;
 import cz.mg.c.core.types.CArrayTest;
 import cz.mg.c.core.types.CObjectTest;
 import cz.mg.c.core.types.CPointerTest;
-import cz.mg.c.core.types.elementary.CInt16Test;
-import cz.mg.c.core.types.elementary.CInt32Test;
-import cz.mg.c.core.types.elementary.CInt64Test;
-import cz.mg.c.core.types.elementary.CInt8Test;
+import cz.mg.c.core.types.elementary.*;
 
 public @Test class AllTests {
     public static void main(String[] args) {
@@ -26,6 +23,8 @@ public @Test class AllTests {
         CPointerTest.main(args);
 
         // cz.mg.c.core.types.elementary
+        CDoubleTest.main(args);
+        CFloatTest.main(args);
         CInt8Test.main(args);
         CInt16Test.main(args);
         CInt32Test.main(args);

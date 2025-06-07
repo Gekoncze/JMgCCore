@@ -40,8 +40,8 @@ public class CInt64Test {
         }
     }
 
-    private void testGetAndSet(CInt64 value, long b) {
-        value.set(b);
-        Assert.assertEquals(b, value.get());
+    private void testGetAndSet(CInt64 value, long i) {
+        value.set(i);
+        Assert.assertEquals(i, value.get());
     }
 }

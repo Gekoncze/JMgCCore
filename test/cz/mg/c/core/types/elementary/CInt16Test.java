@@ -40,8 +40,8 @@ public class CInt16Test {
         }
     }
 
-    private void testGetAndSet(CInt16 value, short b) {
-        value.set(b);
-        Assert.assertEquals(b, value.get());
+    private void testGetAndSet(CInt16 value, short i) {
+        value.set(i);
+        Assert.assertEquals(i, value.get());
     }
 }

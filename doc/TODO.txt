@@ -2,8 +2,6 @@
     ...
 
 ### SOON ###
-    implement types and add tests
-        add constants for min max ranges for numeric types
     add size type
 
 ### LATER ###

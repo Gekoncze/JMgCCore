@@ -40,8 +40,8 @@ public class CInt32Test {
         }
     }
 
-    private void testGetAndSet(CInt32 value, int b) {
-        value.set(b);
-        Assert.assertEquals(b, value.get());
+    private void testGetAndSet(CInt32 value, int i) {
+        value.set(i);
+        Assert.assertEquals(i, value.get());
     }
 }

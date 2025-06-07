@@ -40,8 +40,8 @@ public class CInt8Test {
         }
     }
 
-    private void testGetAndSet(CInt8 value, byte b) {
-        value.set(b);
-        Assert.assertEquals(b, value.get());
+    private void testGetAndSet(CInt8 value, byte i) {
+        value.set(i);
+        Assert.assertEquals(i, value.get());
     }
 }
