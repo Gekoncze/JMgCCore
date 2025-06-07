@@ -4,6 +4,7 @@
 ### SOON ###
     implement types and add tests
     add unsigned types (use cast conversion strategy)
+    add unsigned char type
     add size type (use cast conversion strategy)
     add constants for min max ranges for numeric types
 

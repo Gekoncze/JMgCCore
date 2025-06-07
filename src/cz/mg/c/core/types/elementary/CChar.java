@@ -9,6 +9,8 @@ import cz.mg.c.core.metadata.CMetadata;
 import cz.mg.c.core.types.CObject;
 
 public @Entity class CChar extends CObject {
+    public static final byte MIN = nativeMin();
+    public static final byte MAX = nativeMax();
     public static final long SIZE = nativeSize();
     public static final @Mandatory CConstructor<CChar> CONSTRUCTOR = CChar::new;
     public static final @Mandatory CMetadata<CChar> METADATA = new CMetadata<>(SIZE, CONSTRUCTOR);
@@ -18,15 +20,17 @@ public @Entity class CChar extends CObject {
     }
 
     @Required @Value
-    public char get() {
+    public byte get() {
         return nativeGet(address);
     }
 
-    public void set(char value) {
+    public void set(byte value) {
         nativeSet(address, value);
     }
 
+    public static native byte nativeMin();
+    public static native byte nativeMax();
     public static native long nativeSize();
-    public static native char nativeGet(long address);
-    public static native void nativeSet(long address, char value);
+    public static native byte nativeGet(long address);
+    public static native void nativeSet(long address, byte value);
 }
