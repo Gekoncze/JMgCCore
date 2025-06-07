@@ -17,7 +17,7 @@ JNIEXPORT jbyte JNICALL Java_cz_mg_c_core_types_elementary_CInt8_nativeGet(JNIEn
     return *ptr;
 }
 
-JNIEXPORT void JNICALL Java_cz_mg_c_core_types_elementary_CInt8_nativeSet(JNIEnv* env, jclass clazz, jlong address, jbyte byte) {
+JNIEXPORT void JNICALL Java_cz_mg_c_core_types_elementary_CInt8_nativeSet(JNIEnv* env, jclass clazz, jlong address, jbyte value) {
     int8_t* ptr = (int8_t*) l2p(address);
-    *ptr = byte;
+    *ptr = value;
 }
