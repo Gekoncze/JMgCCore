@@ -1,9 +1,9 @@
-package cz.mg.c.core.entities.types;
+package cz.mg.c.core.types.elementary;
 
 import cz.mg.annotations.classes.Entity;
 import cz.mg.annotations.requirement.Required;
 import cz.mg.annotations.storage.Value;
-import cz.mg.c.core.entities.CObject;
+import cz.mg.c.core.types.CObject;
 
 public @Entity class CDouble extends CObject {
     public CDouble(long address) {

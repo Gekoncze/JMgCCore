@@ -2,10 +2,10 @@ package cz.mg.c.core.common;
 
 import cz.mg.annotations.classes.Static;
 import cz.mg.annotations.requirement.Mandatory;
-import cz.mg.c.core.entities.CArray;
-import cz.mg.c.core.entities.CObject;
-import cz.mg.c.core.entities.CPointer;
-import cz.mg.c.core.entities.metadata.CMetadata;
+import cz.mg.c.core.types.CArray;
+import cz.mg.c.core.types.CObject;
+import cz.mg.c.core.types.CPointer;
+import cz.mg.c.core.metadata.CMetadata;
 
 public @Static class CFactory {
     public static <T extends CObject> @Mandatory CPointer<T> createPointer(

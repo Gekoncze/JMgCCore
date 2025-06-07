@@ -1,9 +1,9 @@
-package cz.mg.c.core.entities;
+package cz.mg.c.core.types;
 
 import cz.mg.annotations.classes.Data;
 import cz.mg.annotations.requirement.Mandatory;
-import cz.mg.c.core.entities.metadata.CConstructor;
-import cz.mg.c.core.entities.metadata.CMetadata;
+import cz.mg.c.core.metadata.CConstructor;
+import cz.mg.c.core.metadata.CMetadata;
 
 public @Data class CPointer<C extends CObject> extends CObject {
     public static long NULL = 0L;

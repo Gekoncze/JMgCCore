@@ -1,12 +1,12 @@
-package cz.mg.c.core.entities;
+package cz.mg.c.core.types;
 
 import cz.mg.c.core.Configuration;
 import cz.mg.c.core.common.CFactory;
 import cz.mg.c.core.common.CMemoryManager;
-import cz.mg.c.core.entities.metadata.CMetadata;
+import cz.mg.c.core.metadata.CMetadata;
 import cz.mg.test.Assert;
 
-import static cz.mg.c.core.entities.CPointer.NULL;
+import static cz.mg.c.core.types.CPointer.NULL;
 
 public class CPointerTest {
     public static void main(String[] args) {

@@ -1,14 +1,14 @@
-package cz.mg.c.core.entities;
+package cz.mg.c.core.types;
 
 import cz.mg.annotations.classes.Data;
 import cz.mg.annotations.requirement.Mandatory;
-import cz.mg.c.core.entities.metadata.CConstructor;
-import cz.mg.c.core.entities.metadata.CMetadata;
+import cz.mg.c.core.metadata.CConstructor;
+import cz.mg.c.core.metadata.CMetadata;
 import cz.mg.collections.array.ReadableArray;
 
 import java.util.Iterator;
 
-import static cz.mg.c.core.entities.CPointer.nativePlus;
+import static cz.mg.c.core.types.CPointer.nativePlus;
 
 public @Data class CArray<C extends CObject> extends CObject implements ReadableArray<C> {
     public static <C extends CObject> long SIZE(@Mandatory CMetadata<C> targetMetadata, int count) {

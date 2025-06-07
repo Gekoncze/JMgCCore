@@ -1,13 +1,13 @@
-package cz.mg.c.core.entities;
+package cz.mg.c.core.types;
 
 import cz.mg.annotations.classes.Entity;
 import cz.mg.annotations.requirement.Mandatory;
 import cz.mg.annotations.requirement.Required;
 import cz.mg.annotations.storage.Value;
-import cz.mg.c.core.entities.metadata.CConstructor;
-import cz.mg.c.core.entities.metadata.CMetadata;
+import cz.mg.c.core.metadata.CConstructor;
+import cz.mg.c.core.metadata.CMetadata;
 
-import static cz.mg.c.core.entities.CPointer.NULL;
+import static cz.mg.c.core.types.CPointer.NULL;
 
 public @Entity class CObject {
     public static final long SIZE = 1L;

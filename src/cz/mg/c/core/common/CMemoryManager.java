@@ -4,7 +4,7 @@ import cz.mg.annotations.classes.Component;
 import cz.mg.annotations.requirement.Mandatory;
 import cz.mg.collections.list.List;
 
-import static cz.mg.c.core.entities.CPointer.NULL;
+import static cz.mg.c.core.types.CPointer.NULL;
 
 public @Component class CMemoryManager implements AutoCloseable {
     private final @Mandatory List<CMemoryAllocation> allocations = new List<>();

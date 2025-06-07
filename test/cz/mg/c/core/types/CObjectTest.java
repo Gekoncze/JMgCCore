@@ -1,8 +1,8 @@
-package cz.mg.c.core.entities;
+package cz.mg.c.core.types;
 
 import cz.mg.test.Assert;
 
-import static cz.mg.c.core.entities.CPointer.NULL;
+import static cz.mg.c.core.types.CPointer.NULL;
 
 public class CObjectTest {
     public static void main(String[] args) {

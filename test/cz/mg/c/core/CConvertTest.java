@@ -1,6 +1,6 @@
 package cz.mg.c.core;
 
-import cz.mg.c.core.entities.CObject;
+import cz.mg.c.core.types.CObject;
 import cz.mg.test.Assert;
 
 public class CConvertTest {

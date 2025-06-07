@@ -1,12 +1,12 @@
 package cz.mg.c.core.common;
 
 import cz.mg.c.core.Configuration;
-import cz.mg.c.core.entities.CArray;
-import cz.mg.c.core.entities.CObject;
-import cz.mg.c.core.entities.CPointer;
+import cz.mg.c.core.types.CArray;
+import cz.mg.c.core.types.CObject;
+import cz.mg.c.core.types.CPointer;
 import cz.mg.test.Assert;
 
-import static cz.mg.c.core.entities.CPointer.NULL;
+import static cz.mg.c.core.types.CPointer.NULL;
 
 public class CFactoryTest {
     public static void main(String[] args) {
