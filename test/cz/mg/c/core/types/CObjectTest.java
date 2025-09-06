@@ -1,6 +1,7 @@
 package cz.mg.c.core.types;
 
 import cz.mg.test.Assert;
+import cz.mg.test.Assertions;
 
 import static cz.mg.c.core.types.CPointer.NULL;
 
@@ -32,7 +33,7 @@ public class CObjectTest {
     }
 
     private void testNull() {
-        Assert.assertThatCode(() -> new CObject(NULL))
+        Assertions.assertThatCode(() -> new CObject(NULL))
             .throwsException(NullPointerException.class);
     }
 

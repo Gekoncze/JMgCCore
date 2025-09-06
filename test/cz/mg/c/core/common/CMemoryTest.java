@@ -20,9 +20,8 @@ public class CMemoryTest {
     private void testAllocateAndFree() {
         long address = CMemory.allocate(16);
         Assert.assertNotEquals(NULL, address);
-
-        Assert.assertThatCode(() -> {
+        Assert.assertNoException(() -> {
             CMemory.free(address);
-        }).doesNotThrowAnyException();
+        });
     }
 }

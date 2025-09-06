@@ -6,6 +6,7 @@ import cz.mg.c.core.common.CMemoryManager;
 import cz.mg.c.core.metadata.CConstructor;
 import cz.mg.c.core.metadata.CMetadata;
 import cz.mg.test.Assert;
+import cz.mg.test.Assertions;
 
 public class CArrayTest {
     public static void main(String[] args) {
@@ -47,7 +48,7 @@ public class CArrayTest {
 
     private void testNegativeCount() {
         try (CMemoryManager manager = new CMemoryManager()) {
-            Assert.assertThatCode(() -> CFactory.createArray(manager, CObject.METADATA, -1))
+            Assertions.assertThatCode(() -> CFactory.createArray(manager, CObject.METADATA, -1))
                 .throwsException(IllegalArgumentException.class);
         }
     }
@@ -57,9 +58,9 @@ public class CArrayTest {
             CArray<CObject> array = CFactory.createArray(manager, CObject.METADATA, 0);
             Assert.assertEquals(0, array.count());
             Assert.assertEquals(0, count(array));
-            Assert.assertThatCode(() -> array.get(-1)).throwsException(ArrayIndexOutOfBoundsException.class);
-            Assert.assertThatCode(() -> array.get(0)).throwsException(ArrayIndexOutOfBoundsException.class);
-            Assert.assertThatCode(() -> array.get(1)).throwsException(ArrayIndexOutOfBoundsException.class);
+            Assertions.assertThatCode(() -> array.get(-1)).throwsException(ArrayIndexOutOfBoundsException.class);
+            Assertions.assertThatCode(() -> array.get(0)).throwsException(ArrayIndexOutOfBoundsException.class);
+            Assertions.assertThatCode(() -> array.get(1)).throwsException(ArrayIndexOutOfBoundsException.class);
         }
     }
 
@@ -68,9 +69,9 @@ public class CArrayTest {
             CArray<CObject> array = CFactory.createArray(manager, CObject.METADATA, 1);
             Assert.assertEquals(1, array.count());
             Assert.assertEquals(1, count(array));
-            Assert.assertThatCode(() -> array.get(-1)).throwsException(ArrayIndexOutOfBoundsException.class);
+            Assertions.assertThatCode(() -> array.get(-1)).throwsException(ArrayIndexOutOfBoundsException.class);
             Assert.assertEquals(array.address(), array.get(0).address());
-            Assert.assertThatCode(() -> array.get(1)).throwsException(ArrayIndexOutOfBoundsException.class);
+            Assertions.assertThatCode(() -> array.get(1)).throwsException(ArrayIndexOutOfBoundsException.class);
         }
     }
 
@@ -79,11 +80,11 @@ public class CArrayTest {
             CArray<CObject> array = CFactory.createArray(manager, CObject.METADATA, 3);
             Assert.assertEquals(3, array.count());
             Assert.assertEquals(3, count(array));
-            Assert.assertThatCode(() -> array.get(-1)).throwsException(ArrayIndexOutOfBoundsException.class);
+            Assertions.assertThatCode(() -> array.get(-1)).throwsException(ArrayIndexOutOfBoundsException.class);
             Assert.assertEquals(array.address(), array.get(0).address());
             Assert.assertEquals(CPointer.nativePlus(array.address(), 1), array.get(1).address());
             Assert.assertEquals(CPointer.nativePlus(array.address(), 2), array.get(2).address());
-            Assert.assertThatCode(() -> array.get(3)).throwsException(ArrayIndexOutOfBoundsException.class);
+            Assertions.assertThatCode(() -> array.get(3)).throwsException(ArrayIndexOutOfBoundsException.class);
         }
     }
 
@@ -92,11 +93,11 @@ public class CArrayTest {
             CArray<CObject> array = CFactory.createArray(manager, new CMetadata<>(8, CObject.CONSTRUCTOR), 3);
             Assert.assertEquals(3, array.count());
             Assert.assertEquals(3, count(array));
-            Assert.assertThatCode(() -> array.get(-1)).throwsException(ArrayIndexOutOfBoundsException.class);
+            Assertions.assertThatCode(() -> array.get(-1)).throwsException(ArrayIndexOutOfBoundsException.class);
             Assert.assertEquals(array.address(), array.get(0).address());
             Assert.assertEquals(CPointer.nativePlus(array.address(), 8), array.get(1).address());
             Assert.assertEquals(CPointer.nativePlus(array.address(), 16), array.get(2).address());
-            Assert.assertThatCode(() -> array.get(3)).throwsException(ArrayIndexOutOfBoundsException.class);
+            Assertions.assertThatCode(() -> array.get(3)).throwsException(ArrayIndexOutOfBoundsException.class);
         }
     }
 
